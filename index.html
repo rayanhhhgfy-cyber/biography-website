@@ -1,10 +1,10 @@
-<!DOCdTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayyan Aljamal | Innovating with Precision and Vision</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <title>Ryan Aljamal | Innovating with Precision and Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500&family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -22,6 +22,7 @@
             --color-line: rgba(255, 255, 255, 0.08);
             --font-serif: 'Cormorant Garamond', Georgia, serif;
             --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-arabic: 'Tajawal', 'Inter', sans-serif;
             --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
         }
@@ -38,6 +39,51 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        body.rtl {
+            direction: rtl;
+            font-family: var(--font-arabic);
+        }
+
+        body.rtl .section-title,
+        body.rtl .hero-title,
+        body.rtl .philosophy-quote {
+            font-family: var(--font-arabic);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1001;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeSlideDown 1s var(--ease-out-expo) 2s forwards;
+        }
+        body.rtl .lang-switcher {
+            right: auto;
+            left: 2rem;
+        }
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: transparent;
+            border: 1px solid var(--color-line);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        .lang-btn:hover,
+        .lang-btn.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: rgba(99, 102, 241, 0.1);
         }
 
         /* Custom Scrollbar */
@@ -140,6 +186,11 @@
             transform: scale(2);
             background: rgba(99, 102, 241, 0.1);
         }
+        @media (max-width: 768px) {
+            .cursor {
+                display: none;
+            }
+        }
 
         /* Preloader */
         .preloader {
@@ -241,6 +292,7 @@
         .nav-links li:nth-child(3) { animation-delay: 1.8s; }
         .nav-links li:nth-child(4) { animation-delay: 1.9s; }
         .nav-links li:nth-child(5) { animation-delay: 2.0s; }
+        .nav-links li:nth-child(6) { animation-delay: 2.1s; }
         
         .nav-links a {
             color: var(--color-text);
@@ -467,6 +519,9 @@
             transform: translateX(-30px);
             transition: all 1s var(--ease-out-expo);
         }
+        body.rtl .section-label {
+            transform: translateX(30px);
+        }
         .section-label.visible {
             opacity: 1;
             transform: translateX(0);
@@ -481,6 +536,10 @@
             display: inline-block;
             overflow: hidden;
             margin-right: 0.3em;
+        }
+        body.rtl .section-title .word {
+            margin-right: 0;
+            margin-left: 0.3em;
         }
         .section-title .word span {
             display: inline-block;
@@ -524,6 +583,9 @@
             transform-origin: right;
             transition: transform 1.2s var(--ease-out-expo);
         }
+        body.rtl .about-image-wrapper::before {
+            transform-origin: left;
+        }
         .about-image-wrapper.visible::before {
             transform: scaleX(0);
         }
@@ -549,12 +611,21 @@
             transform: translate(-20px, -20px);
             transition: all 1s var(--ease-out-expo) 0.5s;
         }
+        body.rtl .about-image-frame {
+            left: -2rem;
+            right: 2rem;
+            transform: translate(20px, -20px);
+        }
         .about-image.visible .about-image-frame {
             opacity: 0.3;
             transform: translate(0, 0);
         }
         .about-content {
             padding-left: 2rem;
+        }
+        body.rtl .about-content {
+            padding-left: 0;
+            padding-right: 2rem;
         }
         .about-text {
             font-size: 1.1rem;
@@ -588,6 +659,9 @@
             transform: translateX(-30px);
             transition: all 0.8s var(--ease-out-expo), border-color 0.3s, background 0.3s;
         }
+        body.rtl .journey-card {
+            transform: translateX(30px);
+        }
         .journey-card.visible {
             opacity: 1;
             transform: translateX(0);
@@ -601,15 +675,128 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
+        body.rtl .journey-card-title {
+            font-family: var(--font-arabic);
+        }
         .journey-card-desc {
             font-size: 0.9rem;
             color: var(--color-text-muted);
             line-height: 1.6;
         }
 
+        /* Services Section */
+        .services {
+            background: var(--color-bg);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .service-card {
+            position: relative;
+            padding: 3rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-line);
+            border-radius: 16px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s var(--ease-out-expo), border-color 0.3s;
+        }
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .service-card:hover {
+            border-color: var(--color-accent);
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 2rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s var(--ease-out-expo), background 0.3s;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(99, 102, 241, 0.2);
+        }
+        .service-icon svg {
+            width: 35px;
+            height: 35px;
+            stroke: var(--color-accent);
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .service-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        body.rtl .service-title {
+            font-family: var(--font-arabic);
+        }
+        .service-desc {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .service-features li {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        body.rtl .service-features li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+        }
+        .service-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+        body.rtl .service-features li::before {
+            left: auto;
+            right: 0;
+        }
+
         /* Skills Section */
         .skills {
-            background: var(--color-bg);
+            background: var(--color-bg-secondary);
         }
         .skills-grid {
             display: grid;
@@ -633,9 +820,13 @@
             align-items: center;
             gap: 1rem;
         }
+        body.rtl .skill-category-title {
+            font-family: var(--font-arabic);
+        }
         .skill-category-icon {
             width: 40px;
             height: 40px;
+            flex-shrink: 0;
         }
         .skill-category-icon svg {
             width: 100%;
@@ -673,13 +864,16 @@
             width: 0;
             transition: width 1.5s var(--ease-out-expo);
         }
+        body.rtl .skill-bar-fill {
+            background: linear-gradient(-90deg, var(--color-accent), var(--color-accent-secondary));
+        }
         .skill-bar.visible .skill-bar-fill {
             width: var(--skill-level);
         }
 
         /* Projects Section */
         .projects {
-            background: var(--color-bg-secondary);
+            background: var(--color-bg);
         }
         .projects-grid {
             display: grid;
@@ -689,7 +883,7 @@
         .project-card {
             position: relative;
             padding: 2.5rem;
-            background: var(--color-bg);
+            background: var(--color-bg-secondary);
             border: 1px solid var(--color-line);
             border-radius: 12px;
             overflow: hidden;
@@ -748,6 +942,9 @@
             font-weight: 400;
             margin-bottom: 1rem;
         }
+        body.rtl .project-title {
+            font-family: var(--font-arabic);
+        }
         .project-desc {
             font-size: 0.9rem;
             font-weight: 300;
@@ -773,7 +970,7 @@
 
         /* Philosophy Section */
         .philosophy {
-            background: var(--color-bg);
+            background: var(--color-bg-secondary);
             text-align: center;
             padding: 12rem 4rem;
             position: relative;
@@ -806,6 +1003,9 @@
             transform: translateY(30px);
             transition: all 0.8s var(--ease-out-expo);
         }
+        body.rtl .philosophy-quote {
+            font-family: var(--font-arabic);
+        }
         .philosophy-quote.visible {
             opacity: 1;
             transform: translateY(0);
@@ -837,7 +1037,7 @@
 
         /* Contact Section */
         .contact {
-            background: var(--color-bg-secondary);
+            background: var(--color-bg);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -879,10 +1079,17 @@
             font-weight: 300;
             margin-bottom: 3rem;
         }
+        body.rtl .contact-cta {
+            font-family: var(--font-arabic);
+        }
         .contact-cta .word {
             display: inline-block;
             margin-right: 0.2em;
             overflow: hidden;
+        }
+        body.rtl .contact-cta .word {
+            margin-right: 0;
+            margin-left: 0.2em;
         }
         .contact-cta .word span {
             display: inline-block;
@@ -934,6 +1141,9 @@
             transition: transform 0.5s var(--ease-out-expo);
             z-index: -1;
         }
+        body.rtl .contact-btn::before {
+            transform-origin: left;
+        }
         .contact-btn:hover {
             border-color: var(--color-accent);
             color: var(--color-bg);
@@ -942,16 +1152,23 @@
             transform: scaleX(1);
             transform-origin: left;
         }
+        body.rtl .contact-btn:hover::before {
+            transform-origin: right;
+        }
         .contact-btn svg {
             width: 18px;
             height: 18px;
             stroke: currentColor;
             stroke-width: 1.5;
             fill: none;
+            flex-shrink: 0;
             transition: transform 0.3s;
         }
         .contact-btn:hover svg {
             transform: translateX(3px);
+        }
+        body.rtl .contact-btn:hover svg {
+            transform: translateX(-3px);
         }
         .contact-email {
             display: inline-block;
@@ -1031,7 +1248,7 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--color-line);
-            background: var(--color-bg);
+            background: var(--color-bg-secondary);
             position: relative;
             z-index: 2;
         }
@@ -1047,6 +1264,9 @@
             color: var(--color-accent);
             opacity: 0;
             animation: signatureFade 1s var(--ease-out-expo) forwards;
+        }
+        body.rtl .footer-signature {
+            font-family: var(--font-arabic);
         }
         @keyframes signatureFade {
             to { opacity: 0.6; }
@@ -1079,6 +1299,17 @@
             50% { transform: translateX(100%); }
         }
 
+        /* Bilingual text display */
+        .lang-en { display: inline; }
+        .lang-ar { display: none; }
+        body.rtl .lang-en { display: none; }
+        body.rtl .lang-ar { display: inline; }
+
+        .lang-block-en { display: block; }
+        .lang-block-ar { display: none; }
+        body.rtl .lang-block-en { display: none; }
+        body.rtl .lang-block-ar { display: block; }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             section {
@@ -1095,6 +1326,9 @@
                 grid-template-columns: 1fr;
             }
             .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1114,10 +1348,24 @@
                 gap: 1rem;
                 text-align: center;
             }
+            .lang-switcher {
+                top: 1rem;
+                right: 1rem;
+            }
+            body.rtl .lang-switcher {
+                right: auto;
+                left: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="langEn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="langAr" onclick="setLang('ar')">AR</button>
+    </div>
+
     <!-- Animated Background -->
     <div class="animated-bg">
         <div class="floating-shape"></div>
@@ -1141,11 +1389,12 @@
     <nav class="nav">
         <div class="nav-logo">RA</div>
         <ul class="nav-links">
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#about" class="nav-link"><span class="lang-en">About</span><span class="lang-ar">عني</span></a></li>
+            <li><a href="#services" class="nav-link"><span class="lang-en">Services</span><span class="lang-ar">خدماتي</span></a></li>
+            <li><a href="#skills" class="nav-link"><span class="lang-en">Skills</span><span class="lang-ar">مهاراتي</span></a></li>
+            <li><a href="#projects" class="nav-link"><span class="lang-en">Projects</span><span class="lang-ar">مشاريعي</span></a></li>
+            <li><a href="#philosophy" class="nav-link"><span class="lang-en">Philosophy</span><span class="lang-ar">فلسفتي</span></a></li>
+            <li><a href="#contact" class="nav-link"><span class="lang-en">Contact</span><span class="lang-ar">تواصل</span></a></li>
         </ul>
     </nav>
 
@@ -1164,13 +1413,21 @@
         </div>
         <div class="hero-content">
             <div class="hero-subtitle">
-                <span>Innovating with Precision and Vision</span>
+                <span class="lang-en">Innovating with Precision and Vision</span>
+                <span class="lang-ar">الابتكار بدقة ورؤية</span>
             </div>
-            <h1 class="hero-title" id="heroTitle">Rayyan Aljamal</h1>
-            <p class="hero-tagline">A journey through technology, creativity, and relentless curiosity.</p>
+            <h1 class="hero-title" id="heroTitle">
+                <span class="lang-en">Ryan Aljamal</span>
+                <span class="lang-ar">ريان الجمل</span>
+            </h1>
+            <p class="hero-tagline">
+                <span class="lang-en">A journey through technology, creativity, and relentless curiosity.</span>
+                <span class="lang-ar">رحلة عبر التكنولوجيا والإبداع والفضول الذي لا ينتهي.</span>
+            </p>
         </div>
         <div class="scroll-indicator">
-            <span>Scroll</span>
+            <span class="lang-en">Scroll</span>
+            <span class="lang-ar">مرر للأسفل</span>
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -1178,37 +1435,107 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="section-header">
-            <div class="section-label">Introduction</div>
+            <div class="section-label"><span class="lang-en">Introduction</span><span class="lang-ar">مقدمة</span></div>
             <h2 class="section-title">
-                <span class="word"><span>Who</span></span>
-                <span class="word"><span>I</span></span>
-                <span class="word"><span>Am</span></span>
+                <span class="lang-block-en">
+                    <span class="word"><span>Who</span></span>
+                    <span class="word"><span>I</span></span>
+                    <span class="word"><span>Am</span></span>
+                </span>
+                <span class="lang-block-ar">
+                    <span class="word"><span>من</span></span>
+                    <span class="word"><span>أنا</span></span>
+                </span>
             </h2>
         </div>
         <div class="about-grid">
             <div class="about-image">
                 <div class="about-image-wrapper">
-    <img src="me.png" alt="Rayyan Aljamal">
-            </div>
+                    <img src="me.png" alt="Ryan Aljamal">
+                </div>
                 <div class="about-image-frame"></div>
             </div>
             <div class="about-content">
-                <p class="about-text">A dedicated student and tech enthusiast from Jordan, exploring digital innovation, gaming, and interactive experiences. My passion lies at the intersection of technology and creativity.</p>
-                <p class="about-text">Every challenge is an opportunity to learn, every problem a puzzle waiting to be solved. I believe in the power of curiosity to drive meaningful innovation.</p>
+                <p class="about-text">
+                    <span class="lang-en">A dedicated student and tech enthusiast from Jordan, exploring digital innovation, gaming, and interactive experiences. My passion lies at the intersection of technology and creativity.</span>
+                    <span class="lang-ar">طالب ومتحمس للتكنولوجيا من الأردن، أستكشف الابتكار الرقمي والألعاب والتجارب التفاعلية. شغفي يكمن عند تقاطع التكنولوجيا والإبداع.</span>
+                </p>
+                <p class="about-text">
+                    <span class="lang-en">Every challenge is an opportunity to learn, every problem a puzzle waiting to be solved. I believe in the power of curiosity to drive meaningful innovation.</span>
+                    <span class="lang-ar">كل تحدٍّ هو فرصة للتعلم، وكل مشكلة هي لغز ينتظر الحل. أؤمن بقوة الفضول في دفع الابتكار الهادف.</span>
+                </p>
                 <div class="journey-cards">
                     <div class="journey-card">
-                        <h4 class="journey-card-title">Early Curiosity</h4>
-                        <p class="journey-card-desc">Discovered the world of technology through gaming and digital exploration</p>
+                        <h4 class="journey-card-title"><span class="lang-en">Early Curiosity</span><span class="lang-ar">الفضول المبكر</span></h4>
+                        <p class="journey-card-desc"><span class="lang-en">Discovered the world of technology through gaming and digital exploration</span><span class="lang-ar">اكتشفت عالم التكنولوجيا من خلال الألعاب والاستكشاف الرقمي</span></p>
                     </div>
                     <div class="journey-card">
-                        <h4 class="journey-card-title">Learning Journey</h4>
-                        <p class="journey-card-desc">Diving deep into coding, troubleshooting, and understanding how systems work</p>
+                        <h4 class="journey-card-title"><span class="lang-en">Learning Journey</span><span class="lang-ar">رحلة التعلم</span></h4>
+                        <p class="journey-card-desc"><span class="lang-en">Diving deep into coding, troubleshooting, and understanding how systems work</span><span class="lang-ar">الغوص في البرمجة وحل المشكلات وفهم كيفية عمل الأنظمة</span></p>
                     </div>
                     <div class="journey-card">
-                        <h4 class="journey-card-title">Building Forward</h4>
-                        <p class="journey-card-desc">Creating projects and experiences that merge creativity with technical skill</p>
+                        <h4 class="journey-card-title"><span class="lang-en">Building Forward</span><span class="lang-ar">البناء للمستقبل</span></h4>
+                        <p class="journey-card-desc"><span class="lang-en">Creating projects and experiences that merge creativity with technical skill</span><span class="lang-ar">إنشاء مشاريع وتجارب تجمع بين الإبداع والمهارة التقنية</span></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-label"><span class="lang-en">What I Offer</span><span class="lang-ar">ما أقدمه</span></div>
+            <h2 class="section-title">
+                <span class="lang-block-en">
+                    <span class="word"><span>What</span></span>
+                    <span class="word"><span>Can</span></span>
+                    <span class="word"><span>I</span></span>
+                    <span class="word"><span>Do</span></span>
+                    <span class="word"><span>For</span></span>
+                    <span class="word"><span>You</span></span>
+                </span>
+                <span class="lang-block-ar">
+                    <span class="word"><span>ماذا</span></span>
+                    <span class="word"><span>يمكنني</span></span>
+                    <span class="word"><span>أن</span></span>
+                    <span class="word"><span>أقدم</span></span>
+                    <span class="word"><span>لك</span></span>
+                </span>
+            </h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7,10 10,7 13,10 17,6"/></svg>
+                </div>
+                <h3 class="service-title"><span class="lang-en">Website Development</span><span class="lang-ar">تطوير المواقع</span></h3>
+                <p class="service-desc">
+                    <span class="lang-en">I can build you a professional, modern website tailored to your needs. From personal portfolios to business landing pages, I create responsive and visually stunning web experiences.</span>
+                    <span class="lang-ar">يمكنني بناء موقع إلكتروني احترافي وعصري مصمم حسب احتياجاتك. من المحافظ الشخصية إلى صفحات الأعمال، أقوم بإنشاء تجارب ويب متجاوبة ومذهلة بصرياً.</span>
+                </p>
+                <ul class="service-features">
+                    <li><span class="lang-en">Custom design & development</span><span class="lang-ar">تصميم وتطوير مخصص</span></li>
+                    <li><span class="lang-en">Mobile-responsive layouts</span><span class="lang-ar">تصاميم متجاوبة للجوال</span></li>
+                    <li><span class="lang-en">Modern animations & interactions</span><span class="lang-ar">حركات وتفاعلات عصرية</span></li>
+                    <li><span class="lang-en">Fast loading & optimized</span><span class="lang-ar">سرعة تحميل عالية ومحسّن</span></li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><circle cx="12" cy="12" r="3" fill="var(--color-accent)" stroke="none"/></svg>
+                </div>
+                <h3 class="service-title"><span class="lang-en">Meta Verified Badge</span><span class="lang-ar">شارة التوثيق من ميتا</span></h3>
+                <p class="service-desc">
+                    <span class="lang-en">I can help you get verified on Meta platforms (Instagram, Facebook). Get that blue checkmark to enhance your credibility and stand out from the crowd.</span>
+                    <span class="lang-ar">يمكنني مساعدتك في الحصول على التوثيق على منصات ميتا (إنستغرام، فيسبوك). احصل على العلامة الزرقاء لتعزيز مصداقيتك والتميز عن الآخرين.</span>
+                </p>
+                <ul class="service-features">
+                    <li><span class="lang-en">Instagram verification</span><span class="lang-ar">توثيق إنستغرام</span></li>
+                    <li><span class="lang-en">Facebook verification</span><span class="lang-ar">توثيق فيسبوك</span></li>
+                    <li><span class="lang-en">Profile optimization guidance</span><span class="lang-ar">إرشادات لتحسين الملف الشخصي</span></li>
+                    <li><span class="lang-en">Step-by-step assistance</span><span class="lang-ar">مساعدة خطوة بخطوة</span></li>
+                </ul>
             </div>
         </div>
     </section>
@@ -1216,13 +1543,22 @@
     <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="section-header">
-            <div class="section-label">Expertise</div>
+            <div class="section-label"><span class="lang-en">Expertise</span><span class="lang-ar">الخبرات</span></div>
             <h2 class="section-title">
-                <span class="word"><span>Crafted</span></span>
-                <span class="word"><span>Skills</span></span>
-                <span class="word"><span>in</span></span>
-                <span class="word"><span>Every</span></span>
-                <span class="word"><span>Pixel</span></span>
+                <span class="lang-block-en">
+                    <span class="word"><span>Crafted</span></span>
+                    <span class="word"><span>Skills</span></span>
+                    <span class="word"><span>in</span></span>
+                    <span class="word"><span>Every</span></span>
+                    <span class="word"><span>Pixel</span></span>
+                </span>
+                <span class="lang-block-ar">
+                    <span class="word"><span>مهارات</span></span>
+                    <span class="word"><span>متقنة</span></span>
+                    <span class="word"><span>في</span></span>
+                    <span class="word"><span>كل</span></span>
+                    <span class="word"><span>بكسل</span></span>
+                </span>
             </h2>
         </div>
         <div class="skills-grid">
@@ -1231,30 +1567,30 @@
                     <div class="skill-category-icon">
                         <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
-                    Tech & Gaming
+                    <span class="lang-en">Tech & Systems</span><span class="lang-ar">التقنية والأنظمة</span>
                 </h3>
+                <div class="skill-bar" style="--skill-level: 85%">
+                    <div class="skill-bar-header">
+                        <span class="skill-bar-name"><span class="lang-en">iPhone Troubleshooting</span><span class="lang-ar">حل مشاكل الآيفون</span></span>
+                        <span class="skill-bar-percent">85%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill"></div>
+                    </div>
+                </div>
                 <div class="skill-bar" style="--skill-level: 90%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Minecraft Expertise</span>
+                        <span class="skill-bar-name"><span class="lang-en">Windows Systems</span><span class="lang-ar">أنظمة ويندوز</span></span>
                         <span class="skill-bar-percent">90%</span>
                     </div>
                     <div class="skill-bar-track">
                         <div class="skill-bar-fill"></div>
                     </div>
                 </div>
-                <div class="skill-bar" style="--skill-level: 76%">
+                <div class="skill-bar" style="--skill-level: 80%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">iPhone Troubleshooting</span>
-                        <span class="skill-bar-percent">76%</span>
-                    </div>
-                    <div class="skill-bar-track">
-                        <div class="skill-bar-fill"></div>
-                    </div>
-                </div>
-                <div class="skill-bar" style="--skill-level: 87%">
-                    <div class="skill-bar-header">
-                        <span class="skill-bar-name">Windows Systems</span>
-                        <span class="skill-bar-percent">87%</span>
+                        <span class="skill-bar-name"><span class="lang-en">System Optimization</span><span class="lang-ar">تحسين الأنظمة</span></span>
+                        <span class="skill-bar-percent">80%</span>
                     </div>
                     <div class="skill-bar-track">
                         <div class="skill-bar-fill"></div>
@@ -1266,7 +1602,7 @@
                     <div class="skill-category-icon">
                         <svg viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
                     </div>
-                    Coding Knowledge
+                    <span class="lang-en">Coding Knowledge</span><span class="lang-ar">معرفة البرمجة</span>
                 </h3>
                 <div class="skill-bar" style="--skill-level: 91%">
                     <div class="skill-bar-header">
@@ -1279,17 +1615,17 @@
                 </div>
                 <div class="skill-bar" style="--skill-level: 88%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">JavaScript Basics</span>
+                        <span class="skill-bar-name">JavaScript</span>
                         <span class="skill-bar-percent">88%</span>
                     </div>
                     <div class="skill-bar-track">
                         <div class="skill-bar-fill"></div>
                     </div>
                 </div>
-                <div class="skill-bar" style="--skill-level: 79%">
+                <div class="skill-bar" style="--skill-level: 85%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">CSS Styling</span>
-                        <span class="skill-bar-percent">79%</span>
+                        <span class="skill-bar-name">CSS</span>
+                        <span class="skill-bar-percent">85%</span>
                     </div>
                     <div class="skill-bar-track">
                         <div class="skill-bar-fill"></div>
@@ -1301,11 +1637,11 @@
                     <div class="skill-category-icon">
                         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                     </div>
-                    Digital Creativity
+                    <span class="lang-en">Digital Creativity</span><span class="lang-ar">الإبداع الرقمي</span>
                 </h3>
                 <div class="skill-bar" style="--skill-level: 82%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Content Creation</span>
+                        <span class="skill-bar-name"><span class="lang-en">Content Creation</span><span class="lang-ar">إنشاء المحتوى</span></span>
                         <span class="skill-bar-percent">82%</span>
                     </div>
                     <div class="skill-bar-track">
@@ -1314,16 +1650,7 @@
                 </div>
                 <div class="skill-bar" style="--skill-level: 85%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Digital Design</span>
-                        <span class="skill-bar-percent">85%</span>
-                    </div>
-                    <div class="skill-bar-track">
-                        <div class="skill-bar-fill"></div>
-                    </div>
-                </div>
-                <div class="skill-bar" style="--skill-level: 85%">
-                    <div class="skill-bar-header">
-                        <span class="skill-bar-name">Digital Design</span>
+                        <span class="skill-bar-name"><span class="lang-en">Digital Design</span><span class="lang-ar">التصميم الرقمي</span></span>
                         <span class="skill-bar-percent">85%</span>
                     </div>
                     <div class="skill-bar-track">
@@ -1332,7 +1659,7 @@
                 </div>
                 <div class="skill-bar" style="--skill-level: 89%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Problem Solving</span>
+                        <span class="skill-bar-name"><span class="lang-en">Problem Solving</span><span class="lang-ar">حل المشكلات</span></span>
                         <span class="skill-bar-percent">89%</span>
                     </div>
                     <div class="skill-bar-track">
@@ -1345,11 +1672,11 @@
                     <div class="skill-category-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
-                    Learning & Growth
+                    <span class="lang-en">Learning & Growth</span><span class="lang-ar">التعلم والنمو</span>
                 </h3>
                 <div class="skill-bar" style="--skill-level: 95%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Curiosity & Research</span>
+                        <span class="skill-bar-name"><span class="lang-en">Curiosity & Research</span><span class="lang-ar">الفضول والبحث</span></span>
                         <span class="skill-bar-percent">95%</span>
                     </div>
                     <div class="skill-bar-track">
@@ -1358,7 +1685,7 @@
                 </div>
                 <div class="skill-bar" style="--skill-level: 88%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Quick Learning</span>
+                        <span class="skill-bar-name"><span class="lang-en">Quick Learning</span><span class="lang-ar">التعلم السريع</span></span>
                         <span class="skill-bar-percent">88%</span>
                     </div>
                     <div class="skill-bar-track">
@@ -1367,7 +1694,7 @@
                 </div>
                 <div class="skill-bar" style="--skill-level: 92%">
                     <div class="skill-bar-header">
-                        <span class="skill-bar-name">Adaptability</span>
+                        <span class="skill-bar-name"><span class="lang-en">Adaptability</span><span class="lang-ar">التكيف</span></span>
                         <span class="skill-bar-percent">92%</span>
                     </div>
                     <div class="skill-bar-track">
@@ -1381,62 +1708,61 @@
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="section-header">
-            <div class="section-label">Portfolio</div>
+            <div class="section-label"><span class="lang-en">Portfolio</span><span class="lang-ar">أعمالي</span></div>
             <h2 class="section-title">
-                <span class="word"><span>Selected</span></span>
-                <span class="word"><span>Works</span></span>
-                <span class="word"><span>&</span></span>
-                <span class="word"><span>Experiences</span></span>
+                <span class="lang-block-en">
+                    <span class="word"><span>Selected</span></span>
+                    <span class="word"><span>Works</span></span>
+                    <span class="word"><span>&</span></span>
+                    <span class="word"><span>Experiences</span></span>
+                </span>
+                <span class="lang-block-ar">
+                    <span class="word"><span>أعمال</span></span>
+                    <span class="word"><span>وتجارب</span></span>
+                    <span class="word"><span>مختارة</span></span>
+                </span>
             </h2>
         </div>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-icon">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                </div>
-                <h3 class="project-title">Minecraft Builds</h3>
-                <p class="project-desc">Creative architectural designs and immersive worlds built block by block, showcasing attention to detail and spatial creativity.</p>
-                <span class="project-tag">Gaming</span>
-            </div>
-            <div class="project-card">
-                <div class="project-icon">
                     <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
-                <h3 class="project-title">Tech Support</h3>
-                <p class="project-desc">Helping friends and family , from iPhone issues to Windows system optimization and recovery.</p>
-                <span class="project-tag">Technical</span>
+                <h3 class="project-title"><span class="lang-en">Tech Support</span><span class="lang-ar">الدعم التقني</span></h3>
+                <p class="project-desc"><span class="lang-en">Helping friends and family with device troubleshooting, from iPhone issues to Windows system optimization and recovery.</span><span class="lang-ar">مساعدة الأصدقاء والعائلة في حل مشاكل الأجهزة، من مشاكل الآيفون إلى تحسين أنظمة ويندوز واستعادتها.</span></p>
+                <span class="project-tag"><span class="lang-en">Technical</span><span class="lang-ar">تقني</span></span>
             </div>
             <div class="project-card">
                 <div class="project-icon">
                     <svg viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
                 </div>
-                <h3 class="project-title">Web Experiments</h3>
-                <p class="project-desc">Learning HTML, CSS, and JavaScript through hands-on projects, building interactive web pages and exploring web technologies.</p>
-                <span class="project-tag">Development</span>
+                <h3 class="project-title"><span class="lang-en">Web Development</span><span class="lang-ar">تطوير الويب</span></h3>
+                <p class="project-desc"><span class="lang-en">Building interactive web pages using HTML, CSS, and JavaScript, creating modern and responsive web experiences.</span><span class="lang-ar">بناء صفحات ويب تفاعلية باستخدام HTML و CSS و JavaScript، وإنشاء تجارب ويب حديثة ومتجاوبة.</span></p>
+                <span class="project-tag"><span class="lang-en">Development</span><span class="lang-ar">تطوير</span></span>
             </div>
             <div class="project-card">
                 <div class="project-icon">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                 </div>
-                <h3 class="project-title">System Optimization</h3>
-                <p class="project-desc">Fine-tuning computer systems for peak performance, including cleanup utilities, startup optimization, and security hardening.</p>
-                <span class="project-tag">Systems</span>
+                <h3 class="project-title"><span class="lang-en">System Optimization</span><span class="lang-ar">تحسين الأنظمة</span></h3>
+                <p class="project-desc"><span class="lang-en">Fine-tuning computer systems for peak performance, including cleanup utilities, startup optimization, and security hardening.</span><span class="lang-ar">ضبط أنظمة الكمبيوتر للحصول على أفضل أداء، بما في ذلك أدوات التنظيف وتحسين بدء التشغيل وتعزيز الأمان.</span></p>
+                <span class="project-tag"><span class="lang-en">Systems</span><span class="lang-ar">أنظمة</span></span>
             </div>
             <div class="project-card">
                 <div class="project-icon">
                     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
-                <h3 class="project-title">Digital Content</h3>
-                <p class="project-desc">Creating engaging digital content that combines creativity with technical know-how, from graphics to interactive experiences.</p>
-                <span class="project-tag">Creative</span>
+                <h3 class="project-title"><span class="lang-en">Digital Content</span><span class="lang-ar">المحتوى الرقمي</span></h3>
+                <p class="project-desc"><span class="lang-en">Creating engaging digital content that combines creativity with technical know-how, from graphics to interactive experiences.</span><span class="lang-ar">إنشاء محتوى رقمي جذاب يجمع بين الإبداع والمعرفة التقنية، من الرسومات إلى التجارب التفاعلية.</span></p>
+                <span class="project-tag"><span class="lang-en">Creative</span><span class="lang-ar">إبداعي</span></span>
             </div>
             <div class="project-card">
                 <div class="project-icon">
                     <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </div>
-                <h3 class="project-title">Continuous Learning</h3>
-                <p class="project-desc">Always exploring new technologies, frameworks, and ideas to expand knowledge and stay at the forefront of digital innovation.</p>
-                <span class="project-tag">Growth</span>
+                <h3 class="project-title"><span class="lang-en">Continuous Learning</span><span class="lang-ar">التعلم المستمر</span></h3>
+                <p class="project-desc"><span class="lang-en">Always exploring new technologies, frameworks, and ideas to expand knowledge and stay at the forefront of digital innovation.</span><span class="lang-ar">استكشاف مستمر للتقنيات والأطر والأفكار الجديدة لتوسيع المعرفة والبقاء في طليعة الابتكار الرقمي.</span></p>
+                <span class="project-tag"><span class="lang-en">Growth</span><span class="lang-ar">نمو</span></span>
             </div>
         </div>
     </section>
@@ -1445,25 +1771,35 @@
     <section class="philosophy" id="philosophy">
         <div class="philosophy-bg"></div>
         <div class="section-header" style="margin-bottom: 4rem;">
-            <div class="section-label" style="text-align: center;">Mindset</div>
+            <div class="section-label" style="text-align: center;"><span class="lang-en">Mindset</span><span class="lang-ar">العقلية</span></div>
             <h2 class="section-title" style="text-align: center;">
-                <span class="word"><span>My</span></span>
-                <span class="word"><span>Approach</span></span>
-                <span class="word"><span>to</span></span>
-                <span class="word"><span>Innovation</span></span>
+                <span class="lang-block-en">
+                    <span class="word"><span>My</span></span>
+                    <span class="word"><span>Approach</span></span>
+                    <span class="word"><span>to</span></span>
+                    <span class="word"><span>Innovation</span></span>
+                </span>
+                <span class="lang-block-ar">
+                    <span class="word"><span>نهجي</span></span>
+                    <span class="word"><span>في</span></span>
+                    <span class="word"><span>الابتكار</span></span>
+                </span>
             </h2>
         </div>
         <div class="philosophy-quotes">
             <blockquote class="philosophy-quote">
-                Curiosity drives solutions.
+                <span class="lang-en">Curiosity drives solutions.</span>
+                <span class="lang-ar">الفضول يقود الحلول.</span>
             </blockquote>
             <div class="philosophy-divider"></div>
             <blockquote class="philosophy-quote">
-                Every problem has a creative path.
+                <span class="lang-en">Every problem has a creative path.</span>
+                <span class="lang-ar">كل مشكلة لها طريق إبداعي.</span>
             </blockquote>
             <div class="philosophy-divider"></div>
             <blockquote class="philosophy-quote">
-                Technology is the canvas; imagination is the brush.
+                <span class="lang-en">Technology is the canvas; imagination is the brush.</span>
+                <span class="lang-ar">التكنولوجيا هي اللوحة، والخيال هو الفرشاة.</span>
             </blockquote>
         </div>
     </section>
@@ -1480,39 +1816,53 @@
         </div>
         <div class="contact-content">
             <div class="section-header" style="margin-bottom: 3rem;">
-                <div class="section-label" style="text-align: center;">Connect</div>
+                <div class="section-label" style="text-align: center;"><span class="lang-en">Connect</span><span class="lang-ar">تواصل</span></div>
                 <h2 class="section-title" style="text-align: center;">
-                    <span class="word"><span>Connect</span></span>
-                    <span class="word"><span>with</span></span>
-                    <span class="word"><span>Me</span></span>
+                    <span class="lang-block-en">
+                        <span class="word"><span>Connect</span></span>
+                        <span class="word"><span>with</span></span>
+                        <span class="word"><span>Me</span></span>
+                    </span>
+                    <span class="lang-block-ar">
+                        <span class="word"><span>تواصل</span></span>
+                        <span class="word"><span>معي</span></span>
+                    </span>
                 </h2>
             </div>
             <p class="contact-cta">
-                <span class="word"><span>Let's</span></span>
-                <span class="word"><span>create</span></span>
-                <span class="word"><span>something</span></span>
-                <span class="word"><span>amazing</span></span>
-                <span class="word"><span>together</span></span>
+                <span class="lang-block-en">
+                    <span class="word"><span>Let's</span></span>
+                    <span class="word"><span>create</span></span>
+                    <span class="word"><span>something</span></span>
+                    <span class="word"><span>amazing</span></span>
+                    <span class="word"><span>together</span></span>
+                </span>
+                <span class="lang-block-ar">
+                    <span class="word"><span>لنصنع</span></span>
+                    <span class="word"><span>شيئاً</span></span>
+                    <span class="word"><span>مذهلاً</span></span>
+                    <span class="word"><span>معاً</span></span>
+                </span>
             </p>
             <div class="contact-buttons">
                 <a href="mailto:rayanaljamal550@gmail.com" class="contact-btn">
                     <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Email
+                    <span class="lang-en">Email</span><span class="lang-ar">البريد</span>
                 </a>
-                <a href="https://www.linkedin.com/in/rayan-aljamal-2087963a8/"class="contact-btn">
+                <a href="https://www.linkedin.com/in/rayan-aljamal-2087963a8/" class="contact-btn">
                     <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     LinkedIn
                 </a>
                 <a href="https://github.com/rayanhhhgfy-cyber" class="contact-btn">
-                    <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44
+                    <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                     GitHub
                 </a>
             </div>
-            <a href="rayanaljamal550@gmail.com" class="contact-email">rayanaljamal550@gmail.com</a>
+            <a href="mailto:rayanaljamal550@gmail.com" class="contact-email">rayanaljamal550@gmail.com</a>
             <div class="contact-social">
-                <a href="https://www.instagram.com/ra.v25/" class="social link">Instagram</a>
-                <a href="https://x.com/AljamalRay48287" class="social link">Twitter</a>
-                <a href="#" class="social link">Discord</a>
+                <a href="https://www.instagram.com/ra.v25/" class="social-link">Instagram</a>
+                <a href="https://x.com/AljamalRay48287" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Discord</a>
             </div>
         </div>
     </section>
@@ -1520,12 +1870,40 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-wave"></div>
-        <p class="footer-text">End of Journey... For Now</p>
-        <span class="footer-signature">Rayyan Aljamal</span>
-        <a class="footer-back" id="backToTop">Back to Top</a>
+        <p class="footer-text"><span class="lang-en">End of Journey... For Now</span><span class="lang-ar">نهاية الرحلة... حالياً</span></p>
+        <span class="footer-signature"><span class="lang-en">Ryan Aljamal</span><span class="lang-ar">ريان الجمل</span></span>
+        <a class="footer-back" id="backToTop"><span class="lang-en">Back to Top</span><span class="lang-ar">العودة للأعلى</span></a>
     </footer>
 
     <script>
+        // Language switching
+        function setLang(lang) {
+            const body = document.body;
+            const html = document.documentElement;
+            
+            if (lang === 'ar') {
+                body.classList.add('rtl');
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                document.getElementById('langAr').classList.add('active');
+                document.getElementById('langEn').classList.remove('active');
+            } else {
+                body.classList.remove('rtl');
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                document.getElementById('langEn').classList.add('active');
+                document.getElementById('langAr').classList.remove('active');
+            }
+            
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Load preferred language
+        const savedLang = localStorage.getItem('preferredLang');
+        if (savedLang) {
+            setLang(savedLang);
+        }
+
         // Preloader
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -1556,24 +1934,14 @@
         animateCursor();
 
         // Cursor hover effect
-        const hoverElements = document.querySelectorAll('a, button, .project-card, .journey-card, .contact-btn');
+        const hoverElements = document.querySelectorAll('a, button, .project-card, .journey-card, .contact-btn, .service-card');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        // Hero title character animation
+        // Hero title character animation - simplified for bilingual
         const heroTitle = document.getElementById('heroTitle');
-        const titleText = heroTitle.textContent;
-        heroTitle.innerHTML = '';
-        
-        titleText.split('').forEach((char, i) => {
-            const span = document.createElement('span');
-            span.classList.add('char');
-            span.textContent = char === ' ' ? '\u00A0' : char;
-            span.style.animationDelay = `${2.8 + i * 0.05}s`;
-            heroTitle.appendChild(span);
-        });
 
         // Intersection Observer for scroll animations
         const observerOptions = {
@@ -1586,11 +1954,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
-                    // Animate skill bars
-                    if (entry.target.classList.contains('skill-bar')) {
-                        entry.target.classList.add('visible');
-                    }
                 }
             });
         }, observerOptions);
@@ -1599,7 +1962,7 @@
         const animatedElements = document.querySelectorAll(
             '.section-label, .section-title, .about-image-wrapper, .about-image, ' +
             '.about-text, .journey-card, .skill-category, .skill-bar, .project-card, ' +
-            '.philosophy-quote, .philosophy-divider, .contact-cta, .contact-btn, .contact-email, .social-link'
+            '.philosophy-quote, .philosophy-divider, .contact-cta, .contact-btn, .contact-email, .social-link, .service-card'
         );
         
         animatedElements.forEach(el => observer.observe(el));
@@ -1692,7 +2055,7 @@
         });
 
         // Project card tilt effect
-        document.querySelectorAll('.project-card').forEach(card => {
+        document.querySelectorAll('.project-card, .service-card').forEach(card => {
             card.addEventListener('mousemove', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -1746,6 +2109,10 @@
 
         document.querySelectorAll('.philosophy-divider').forEach((div, i) => {
             div.style.transitionDelay = `${0.3 + i * 0.3}s`;
+        });
+
+        document.querySelectorAll('.service-card').forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.15}s`;
         });
     </script>
 </body>
