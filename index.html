@@ -30,6 +30,7 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
+            overflow-x: hidden;
         }
 
         body {
@@ -1958,13 +1959,11 @@
             
             if (lang === 'ar') {
                 body.classList.add('rtl');
-                html.setAttribute('dir', 'rtl');
                 html.setAttribute('lang', 'ar');
                 document.getElementById('langAr').classList.add('active');
                 document.getElementById('langEn').classList.remove('active');
             } else {
                 body.classList.remove('rtl');
-                html.setAttribute('dir', 'ltr');
                 html.setAttribute('lang', 'en');
                 document.getElementById('langEn').classList.add('active');
                 document.getElementById('langAr').classList.remove('active');
