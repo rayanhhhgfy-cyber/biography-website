@@ -57,11 +57,14 @@
             position: fixed;
             top: 2rem;
             right: 2rem;
-            z-index: 1001;
+            z-index: 10001;
             display: flex;
             gap: 0.5rem;
-            opacity: 0;
-            animation: fadeSlideDown 1s var(--ease-out-expo) 2s forwards;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-line);
+            backdrop-filter: blur(10px);
         }
         body.rtl .lang-switcher {
             right: auto;
@@ -73,7 +76,7 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             background: transparent;
-            border: 1px solid var(--color-line);
+            border: 1px solid transparent;
             color: var(--color-text-muted);
             cursor: pointer;
             transition: all 0.3s;
@@ -690,7 +693,7 @@
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
         .service-card {
@@ -1457,25 +1460,25 @@
             </div>
             <div class="about-content">
                 <p class="about-text">
-                    <span class="lang-en">A dedicated student and tech enthusiast from Jordan, exploring digital innovation, gaming, and interactive experiences. My passion lies at the intersection of technology and creativity.</span>
-                    <span class="lang-ar">طالب ومتحمس للتكنولوجيا من الأردن، أستكشف الابتكار الرقمي والألعاب والتجارب التفاعلية. شغفي يكمن عند تقاطع التكنولوجيا والإبداع.</span>
+                    <span class="lang-en">I'm a dedicated student and tech enthusiast from Jordan. I spend my time exploring digital innovation, gaming, and interactive experiences. My passion lies at the intersection of technology and creativity.</span>
+                    <span class="lang-ar">أنا طالب ومتحمس للتكنولوجيا من الأردن. أقضي وقتي في استكشاف الابتكار الرقمي والألعاب والتجارب التفاعلية. شغفي يكمن عند تقاطع التكنولوجيا والإبداع.</span>
                 </p>
                 <p class="about-text">
-                    <span class="lang-en">Every challenge is an opportunity to learn, every problem a puzzle waiting to be solved. I believe in the power of curiosity to drive meaningful innovation.</span>
-                    <span class="lang-ar">كل تحدٍّ هو فرصة للتعلم، وكل مشكلة هي لغز ينتظر الحل. أؤمن بقوة الفضول في دفع الابتكار الهادف.</span>
+                    <span class="lang-en">For me, every challenge is an opportunity to learn, every problem a puzzle waiting to be solved. I believe in the power of curiosity to drive meaningful innovation.</span>
+                    <span class="lang-ar">بالنسبة لي، كل تحدٍّ هو فرصة للتعلم، وكل مشكلة هي لغز ينتظر الحل. أؤمن بقوة الفضول في دفع الابتكار الهادف.</span>
                 </p>
                 <div class="journey-cards">
                     <div class="journey-card">
-                        <h4 class="journey-card-title"><span class="lang-en">Early Curiosity</span><span class="lang-ar">الفضول المبكر</span></h4>
-                        <p class="journey-card-desc"><span class="lang-en">Discovered the world of technology through gaming and digital exploration</span><span class="lang-ar">اكتشفت عالم التكنولوجيا من خلال الألعاب والاستكشاف الرقمي</span></p>
+                        <h4 class="journey-card-title"><span class="lang-en">My Early Curiosity</span><span class="lang-ar">فضولي المبكر</span></h4>
+                        <p class="journey-card-desc"><span class="lang-en">I discovered the world of technology through gaming and digital exploration when I was young</span><span class="lang-ar">اكتشفت عالم التكنولوجيا من خلال الألعاب والاستكشاف الرقمي منذ صغري</span></p>
                     </div>
                     <div class="journey-card">
-                        <h4 class="journey-card-title"><span class="lang-en">Learning Journey</span><span class="lang-ar">رحلة التعلم</span></h4>
-                        <p class="journey-card-desc"><span class="lang-en">Diving deep into coding, troubleshooting, and understanding how systems work</span><span class="lang-ar">الغوص في البرمجة وحل المشكلات وفهم كيفية عمل الأنظمة</span></p>
+                        <h4 class="journey-card-title"><span class="lang-en">My Learning Journey</span><span class="lang-ar">رحلة تعلمي</span></h4>
+                        <p class="journey-card-desc"><span class="lang-en">I started diving deep into coding, troubleshooting, and understanding how systems work</span><span class="lang-ar">بدأت الغوص في البرمجة وحل المشكلات وفهم كيفية عمل الأنظمة</span></p>
                     </div>
                     <div class="journey-card">
-                        <h4 class="journey-card-title"><span class="lang-en">Building Forward</span><span class="lang-ar">البناء للمستقبل</span></h4>
-                        <p class="journey-card-desc"><span class="lang-en">Creating projects and experiences that merge creativity with technical skill</span><span class="lang-ar">إنشاء مشاريع وتجارب تجمع بين الإبداع والمهارة التقنية</span></p>
+                        <h4 class="journey-card-title"><span class="lang-en">Building My Future</span><span class="lang-ar">بناء مستقبلي</span></h4>
+                        <p class="journey-card-desc"><span class="lang-en">Now I'm creating projects and experiences that merge my creativity with technical skills</span><span class="lang-ar">الآن أقوم بإنشاء مشاريع وتجارب تجمع بين إبداعي ومهاراتي التقنية</span></p>
                     </div>
                 </div>
             </div>
@@ -1535,6 +1538,70 @@
                     <li><span class="lang-en">Facebook verification</span><span class="lang-ar">توثيق فيسبوك</span></li>
                     <li><span class="lang-en">Profile optimization guidance</span><span class="lang-ar">إرشادات لتحسين الملف الشخصي</span></li>
                     <li><span class="lang-en">Step-by-step assistance</span><span class="lang-ar">مساعدة خطوة بخطوة</span></li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <h3 class="service-title"><span class="lang-en">Phone Troubleshooting</span><span class="lang-ar">إصلاح مشاكل الهواتف</span></h3>
+                <p class="service-desc">
+                    <span class="lang-en">Having issues with your iPhone or Android? I can diagnose and fix software problems, optimize performance, and help recover your device from various issues.</span>
+                    <span class="lang-ar">هل تواجه مشاكل مع هاتفك الآيفون أو الأندرويد؟ يمكنني تشخيص وإصلاح مشاكل البرمجيات، وتحسين الأداء، ومساعدتك في استعادة جهازك.</span>
+                </p>
+                <ul class="service-features">
+                    <li><span class="lang-en">iOS & Android support</span><span class="lang-ar">دعم iOS و Android</span></li>
+                    <li><span class="lang-en">Performance optimization</span><span class="lang-ar">تحسين الأداء</span></li>
+                    <li><span class="lang-en">Software issue resolution</span><span class="lang-ar">حل مشاكل البرمجيات</span></li>
+                    <li><span class="lang-en">Data backup guidance</span><span class="lang-ar">إرشادات النسخ الاحتياطي</span></li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M6 8l4 4-4 4"/><line x1="12" y1="16" x2="18" y2="16"/></svg>
+                </div>
+                <h3 class="service-title"><span class="lang-en">PC Setup & Optimization</span><span class="lang-ar">إعداد وتحسين الكمبيوتر</span></h3>
+                <p class="service-desc">
+                    <span class="lang-en">I can help you set up a new PC, optimize Windows for better performance, clean up your system, and configure it for your specific needs - whether gaming or work.</span>
+                    <span class="lang-ar">يمكنني مساعدتك في إعداد كمبيوتر جديد، وتحسين ويندوز للحصول على أداء أفضل، وتنظيف نظامك، وتكوينه حسب احتياجاتك - سواء للألعاب أو العمل.</span>
+                </p>
+                <ul class="service-features">
+                    <li><span class="lang-en">Windows installation & setup</span><span class="lang-ar">تثبيت وإعداد ويندوز</span></li>
+                    <li><span class="lang-en">Performance tuning</span><span class="lang-ar">ضبط الأداء</span></li>
+                    <li><span class="lang-en">Virus & malware removal</span><span class="lang-ar">إزالة الفيروسات والبرامج الضارة</span></li>
+                    <li><span class="lang-en">Software installation</span><span class="lang-ar">تثبيت البرامج</span></li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3 class="service-title"><span class="lang-en">Social Media Management</span><span class="lang-ar">إدارة وسائل التواصل</span></h3>
+                <p class="service-desc">
+                    <span class="lang-en">Need help managing your social media presence? I can assist with content planning, posting schedules, profile optimization, and growing your online audience.</span>
+                    <span class="lang-ar">هل تحتاج مساعدة في إدارة حضورك على وسائل التواصل الاجتماعي؟ يمكنني المساعدة في تخطيط المحتوى، وجدولة المنشورات، وتحسين الملف الشخصي، وتنمية جمهورك.</span>
+                </p>
+                <ul class="service-features">
+                    <li><span class="lang-en">Content strategy</span><span class="lang-ar">استراتيجية المحتوى</span></li>
+                    <li><span class="lang-en">Profile optimization</span><span class="lang-ar">تحسين الملف الشخصي</span></li>
+                    <li><span class="lang-en">Engagement growth tips</span><span class="lang-ar">نصائح لزيادة التفاعل</span></li>
+                    <li><span class="lang-en">Analytics insights</span><span class="lang-ar">تحليل البيانات</span></li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                </div>
+                <h3 class="service-title"><span class="lang-en">Tech Consultation</span><span class="lang-ar">استشارات تقنية</span></h3>
+                <p class="service-desc">
+                    <span class="lang-en">Not sure what laptop to buy? Need advice on tech purchases or solutions? I offer personalized tech consultation to help you make informed decisions.</span>
+                    <span class="lang-ar">غير متأكد من أي لابتوب تشتري؟ تحتاج نصيحة حول المشتريات التقنية أو الحلول؟ أقدم استشارات تقنية مخصصة لمساعدتك في اتخاذ قرارات مدروسة.</span>
+                </p>
+                <ul class="service-features">
+                    <li><span class="lang-en">Device recommendations</span><span class="lang-ar">توصيات الأجهزة</span></li>
+                    <li><span class="lang-en">Budget-friendly options</span><span class="lang-ar">خيارات مناسبة للميزانية</span></li>
+                    <li><span class="lang-en">Setup guidance</span><span class="lang-ar">إرشادات الإعداد</span></li>
+                    <li><span class="lang-en">Tech problem solving</span><span class="lang-ar">حل المشاكل التقنية</span></li>
                 </ul>
             </div>
         </div>
@@ -1729,7 +1796,7 @@
                     <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
                 <h3 class="project-title"><span class="lang-en">Tech Support</span><span class="lang-ar">الدعم التقني</span></h3>
-                <p class="project-desc"><span class="lang-en">Helping friends and family with device troubleshooting, from iPhone issues to Windows system optimization and recovery.</span><span class="lang-ar">مساعدة الأصدقاء والعائلة في حل مشاكل الأجهزة، من مشاكل الآيفون إلى تحسين أنظمة ويندوز واستعادتها.</span></p>
+                <p class="project-desc"><span class="lang-en">I regularly help my friends and family with device troubleshooting, from iPhone issues to Windows system optimization and recovery.</span><span class="lang-ar">أساعد أصدقائي وعائلتي بانتظام في حل مشاكل الأجهزة، من مشاكل الآيفون إلى تحسين أنظمة ويندوز واستعادتها.</span></p>
                 <span class="project-tag"><span class="lang-en">Technical</span><span class="lang-ar">تقني</span></span>
             </div>
             <div class="project-card">
@@ -1737,7 +1804,7 @@
                     <svg viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
                 </div>
                 <h3 class="project-title"><span class="lang-en">Web Development</span><span class="lang-ar">تطوير الويب</span></h3>
-                <p class="project-desc"><span class="lang-en">Building interactive web pages using HTML, CSS, and JavaScript, creating modern and responsive web experiences.</span><span class="lang-ar">بناء صفحات ويب تفاعلية باستخدام HTML و CSS و JavaScript، وإنشاء تجارب ويب حديثة ومتجاوبة.</span></p>
+                <p class="project-desc"><span class="lang-en">I build interactive web pages using HTML, CSS, and JavaScript, creating modern and responsive web experiences.</span><span class="lang-ar">أقوم ببناء صفحات ويب تفاعلية باستخدام HTML و CSS و JavaScript، وأنشئ تجارب ويب حديثة ومتجاوبة.</span></p>
                 <span class="project-tag"><span class="lang-en">Development</span><span class="lang-ar">تطوير</span></span>
             </div>
             <div class="project-card">
@@ -1745,7 +1812,7 @@
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                 </div>
                 <h3 class="project-title"><span class="lang-en">System Optimization</span><span class="lang-ar">تحسين الأنظمة</span></h3>
-                <p class="project-desc"><span class="lang-en">Fine-tuning computer systems for peak performance, including cleanup utilities, startup optimization, and security hardening.</span><span class="lang-ar">ضبط أنظمة الكمبيوتر للحصول على أفضل أداء، بما في ذلك أدوات التنظيف وتحسين بدء التشغيل وتعزيز الأمان.</span></p>
+                <p class="project-desc"><span class="lang-en">I fine-tune computer systems for peak performance, including cleanup utilities, startup optimization, and security hardening.</span><span class="lang-ar">أقوم بضبط أنظمة الكمبيوتر للحصول على أفضل أداء، بما في ذلك أدوات التنظيف وتحسين بدء التشغيل وتعزيز الأمان.</span></p>
                 <span class="project-tag"><span class="lang-en">Systems</span><span class="lang-ar">أنظمة</span></span>
             </div>
             <div class="project-card">
@@ -1753,7 +1820,7 @@
                     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
                 <h3 class="project-title"><span class="lang-en">Digital Content</span><span class="lang-ar">المحتوى الرقمي</span></h3>
-                <p class="project-desc"><span class="lang-en">Creating engaging digital content that combines creativity with technical know-how, from graphics to interactive experiences.</span><span class="lang-ar">إنشاء محتوى رقمي جذاب يجمع بين الإبداع والمعرفة التقنية، من الرسومات إلى التجارب التفاعلية.</span></p>
+                <p class="project-desc"><span class="lang-en">I create engaging digital content that combines my creativity with technical know-how, from graphics to interactive experiences.</span><span class="lang-ar">أنشئ محتوى رقمي جذاب يجمع بين إبداعي ومعرفتي التقنية، من الرسومات إلى التجارب التفاعلية.</span></p>
                 <span class="project-tag"><span class="lang-en">Creative</span><span class="lang-ar">إبداعي</span></span>
             </div>
             <div class="project-card">
@@ -1761,8 +1828,16 @@
                     <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </div>
                 <h3 class="project-title"><span class="lang-en">Continuous Learning</span><span class="lang-ar">التعلم المستمر</span></h3>
-                <p class="project-desc"><span class="lang-en">Always exploring new technologies, frameworks, and ideas to expand knowledge and stay at the forefront of digital innovation.</span><span class="lang-ar">استكشاف مستمر للتقنيات والأطر والأفكار الجديدة لتوسيع المعرفة والبقاء في طليعة الابتكار الرقمي.</span></p>
+                <p class="project-desc"><span class="lang-en">I'm always exploring new technologies, frameworks, and ideas to expand my knowledge and stay at the forefront of digital innovation.</span><span class="lang-ar">أستكشف باستمرار التقنيات والأطر والأفكار الجديدة لتوسيع معرفتي والبقاء في طليعة الابتكار الرقمي.</span></p>
                 <span class="project-tag"><span class="lang-en">Growth</span><span class="lang-ar">نمو</span></span>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 class="project-title"><span class="lang-en">Personal Portfolio</span><span class="lang-ar">الموقع الشخصي</span></h3>
+                <p class="project-desc"><span class="lang-en">I designed and developed this animated portfolio website from scratch, featuring smooth animations, bilingual support, and modern UI/UX principles.</span><span class="lang-ar">صممت وطورت هذا الموقع الشخصي المتحرك من الصفر، يتضمن حركات سلسة ودعم ثنائي اللغة ومبادئ تجربة مستخدم حديثة.</span></p>
+                <span class="project-tag"><span class="lang-en">Showcase</span><span class="lang-ar">عرض</span></span>
             </div>
         </div>
     </section>
